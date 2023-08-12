@@ -1,4 +1,6 @@
-﻿namespace WebApi.Scope.Extensions
+﻿using WebApi.Scope.Filters;
+
+namespace WebApi.Scope.Extensions
 {
     public static class ControllersServiceCollectionExtensions
     {
@@ -6,6 +8,7 @@
         {
             services.AddControllers(options =>
             {
+                options.Filters.Add(typeof(SessionActionFilter));
             }).AddNewtonsoftJson();
         }
     }

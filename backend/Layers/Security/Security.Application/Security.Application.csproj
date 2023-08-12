@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.10" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\src\Core.Infra.Data\Core.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\Infra\src\Infra.DbEntities\Infra.DbEntities.csproj" />
+    <ProjectReference Include="..\Security.Contracts\Security.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

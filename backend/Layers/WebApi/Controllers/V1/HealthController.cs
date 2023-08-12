@@ -1,15 +1,18 @@
 ﻿using Core.Infra.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using Security.Application.Interfaces;
 
 namespace WebApi.Controllers.V1
 {
     public class HealthController : BaseController
     {
         private readonly IApplicationDbContext _context;
+        private readonly ISessionService _sessionService;
 
-        public HealthController(IApplicationDbContext context)
+        public HealthController(IApplicationDbContext context, ISessionService sessionService)
         {
             _context = context;
+            _sessionService = sessionService;
         }
 
         [HttpGet]
@@ -18,7 +21,7 @@ namespace WebApi.Controllers.V1
             var result = _context.CanConnect();
 
             if (result) 
-                return Ok();
+                return Ok(_sessionService.User);
 
             return BadRequest();
         }
